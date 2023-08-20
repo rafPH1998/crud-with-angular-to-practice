@@ -1,7 +1,8 @@
-export interface User {
+export interface Product {
   id?: string,
   name?: string,
-  email?: string,
+  weight?: number,
+  description?: string,
   created_at?: string,
   updated_at?: string
 }
