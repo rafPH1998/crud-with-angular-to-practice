@@ -5,13 +5,13 @@
 
       <h1>Tabela de produtos</h1>
       <div class="mt-10">
-        <a routerLink="/create" class="border rounded bg-blue-500 text-white p-1 text-xs hover:bg-blue-600 font-bold">Adiciionar usuario</a>
+        <a routerLink="/create" class="border rounded bg-blue-500 text-white p-2 text-xs hover:bg-blue-600 font-bold">Adiciionar usuario</a>
       </div>
-      <table class="min-w-full mt-10 shadow-lg rounded-lg">
+      <table class="min-w-full mt-2 shadow-lg rounded-lg">
         <thead class="bg-white border-b shadow-lg">
           <tr>
             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-              #
+              CODIGO
             </th>
             <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
               Nome
@@ -27,17 +27,17 @@
             </th>
           </tr>
         </thead>
-        <tbody>
+        <tbody *ngFor="let products of allProducts">
           <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">1</td>
+            <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{{products.id}}</td>
             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              Mark
+              {{products.name}}
             </td>
             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              produto top
+              {{products.description}}
             </td>
             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              12/05/2023
+              {{products.createdAt}}
             </td>
             <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
               <div class="flex">
