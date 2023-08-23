@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { ProductService } from 'src/app/services/product.service';
 import { MessagesService } from 'src/app/services/messages.service';
+import { Product } from 'src/app/Product';
 
 @Component({
   selector: 'app-create',
@@ -11,6 +12,8 @@ import { MessagesService } from 'src/app/services/messages.service';
   styleUrls: ['./create.component.css']
 })
 export class CreateComponent {
+  @Input() productData?: Product | null
+  @Input() btnText?: string
 
   userForm!: FormGroup;
   isLoading: boolean = false;

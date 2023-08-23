@@ -12,6 +12,6 @@ export class MessagesService {
     this.message = message
     setTimeout(() => {
       this.message = ''
-    }, 4000)
+    }, 3000)
   }
 }

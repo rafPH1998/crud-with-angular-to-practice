@@ -1,6 +1,6 @@
-<div class="flex justify-center mt-24">
+<div class="flex justify-center mt-10">
   <div class="h-max mx-auto flex flex-col items-center">
-    <p class="font-bold">Cadastrar um novo produto</p>
+    <p class="font-bold">{{ productData?.id ? 'Editando produto: ' + productData?.name : 'Cadastrar um novo produto' }}</p>
     <a routerLink="/" class="mt-4">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 stroke-red-500">
         <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
@@ -16,6 +16,7 @@
             type="text"
             name="name"
             placeholder="fulano"
+            ngModel="{{productData?.name}}"
             formControlName="name">
         </div>
         <p *ngIf="name.invalid && formDir.submitted" class="text-red-500">O nome é obrigatório</p>
@@ -27,6 +28,7 @@
             type="text"
             name="weight"
             placeholder="fulano"
+            ngModel="{{productData?.weight}}"
             formControlName="weight">
         </div>
         <p *ngIf="weight.invalid && formDir.submitted" class="text-red-500">A altura do produto é obrigatório</p>
@@ -36,6 +38,7 @@
           <textarea
             class="border border-gray-400 focus:outline-slate-400 rounded-md w-full shadow-sm px-5 py-2"
             name="description"
+            ngModel="{{productData?.description}}"
             formControlName="description"></textarea>
         </div>
         <p *ngIf="description.invalid && formDir.submitted" class="text-red-500">A descrição é obrigatório</p>
@@ -45,8 +48,8 @@
             class="bg-[#1D9BF0] w-1/2 py-1 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]"
             [disabled]="isLoading"
             >
-          <span *ngIf="isLoading">Carregando...</span>
-          <span *ngIf="!isLoading">Cadastrar</span>
+          <span *ngIf="isLoading">{{btnText ? 'Atualizando...' : 'Carregando...'}}</span>
+          <span *ngIf="!isLoading">{{btnText ? 'Atualizar' : 'Cadastrar'}}</span>
         </button>
         </div>
 
