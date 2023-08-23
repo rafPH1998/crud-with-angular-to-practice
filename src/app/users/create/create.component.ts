@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { ProductService } from 'src/app/services/product.service';
+import { MessagesService } from 'src/app/services/messages.service';
 
 @Component({
   selector: 'app-create',
@@ -10,8 +13,13 @@ import { ProductService } from 'src/app/services/product.service';
 export class CreateComponent {
 
   userForm!: FormGroup;
+  isLoading: boolean = false;
 
-  constructor(private productService: ProductService) {}
+  constructor(
+    private productService: ProductService,
+    private messageService: MessagesService,
+    private router: Router,
+  ) {}
 
   ngOnInit(): void {
     this.userForm = new FormGroup({
@@ -34,14 +42,22 @@ export class CreateComponent {
     return this.userForm.get('description')!
   }
 
-  async submit () {
-    if (this.userForm.invalid) {
+
+  async submit() {
+    if (this.userForm.invalid || this.isLoading) {
       return;
     }
 
-    const formData = this.userForm.value;
+    this.isLoading = true;
 
-    await this.productService.createProduct(formData).subscribe()
+    const formData = this.userForm.value;
+    await this.productService.createProduct(formData).subscribe(() => {
+      this.isLoading = false;
+      this.messageService.Sucess('Produto adicionado com sucesso!');
+      this.router.navigate(['/']);
+    }, () => {
+      this.isLoading = false;
+    });
   }
 }
 

@@ -7,12 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { IndexComponent } from './users/index/index.component';
 import { CreateComponent } from './users/create/create.component';
+import { MessagesComponent } from './components/messages/messages.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndexComponent,
     CreateComponent,
+    MessagesComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,6 +23,7 @@ import { CreateComponent } from './users/create/create.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    FontAwesomeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

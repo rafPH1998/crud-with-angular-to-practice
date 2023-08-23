@@ -41,7 +41,13 @@
         <p *ngIf="description.invalid && formDir.submitted" class="text-red-500">A descrição é obrigatório</p>
 
         <div class="flex justify-center mt-5">
-          <button class="bg-[#1D9BF0] w-1/2 py-1 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]">Cadatrar</button>
+          <button
+            class="bg-[#1D9BF0] w-1/2 py-1 rounded-md text-white font-bold cursor-pointer hover:bg-[#181196]"
+            [disabled]="isLoading"
+            >
+          <span *ngIf="isLoading">Carregando...</span>
+          <span *ngIf="!isLoading">Cadastrar</span>
+        </button>
         </div>
 
       </form>
